@@ -1,0 +1,8 @@
+torch
+numpy
+transformers==4.57.1
+rasterio==1.4.4
+safetensors==0.8.0
+pandas>=2.0
+matplotlib>=3.7
+Pillow>=10
