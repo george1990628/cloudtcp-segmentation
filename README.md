@@ -34,9 +34,9 @@ The CLI expects an **extracted dataset directory**, not the ZIP. The Colab noteb
 
 ## Evaluate an existing run
 
-[`notebooks/02_record_baseline.ipynb`](notebooks/02_record_baseline.ipynb) scores prediction TIFFs already saved by the training run. It does not retrain or download a model. Supply the original dataset archive and saved run archive; it calculates exact per-class metrics, preserves validation-file hashes, and records any difference from the original training log.
+[`notebooks/02_record_baseline.ipynb`](notebooks/02_record_baseline.ipynb) scores prediction TIFFs already saved by the training run. Supply the original dataset archive and saved run archive. It calculates exact per-class metrics, preserves validation-file hashes, and records any difference from the original training log.
 
-The same scoring utilities are available in [`evaluation/`](evaluation/). Comparing the baseline against itself is a workflow check; it is not evidence of model improvement. Comparisons between models must use matching validation images, masks, class IDs, and scoring rules. If labels are revised, evaluate both models against the same revised references.
+The same scoring utilities are available in [`evaluation/`](evaluation/). Comparing the baseline against itself is a workflow check. Comparisons between models must use matching validation images, masks, class IDs, and scoring rules. If labels are revised, evaluate both models against the same revised references.
 
 ## Model and attribution
 
@@ -44,6 +44,3 @@ Uses the Hugging Face Transformers SegFormer implementation and the pretrained `
 
 The project contribution is data validation, training orchestration, geospatial export, and evaluation. SegFormer is an upstream model architecture. See [third-party notices](THIRD_PARTY_NOTICES.md); no blanket license is assigned to data, model weights, or team-owned work.
 
-## Validation
-
-Portfolio preparation checked Python syntax and notebook structure. GPU training was not rerun for this packaging step. No numerical IoU improvement is claimed without the original metric exports.
