@@ -1,11 +1,17 @@
-# Dataset contract
+# Dataset format
 
-Supply an extracted dataset directory containing `pipeline_settings.json`, `manifest.csv`, and the image/mask TIFF files referenced by the manifest. The dataset is not redistributed in this repository.
+Start with an extracted dataset folder containing `pipeline_settings.json`, `manifest.csv`, and the image/mask TIFF files listed in the manifest. The dataset itself is not included in this repo.
 
-`pipeline_settings.json` must define `classes` with IDs 0 through 4 and `ignore_label` equal to 255. Class 0 is background. Read the four foreground names from the dataset metadata rather than guessing their numeric order.
+## Classes
 
-The manifest requires `chip`, `split`, `image`, and `mask` columns. Supported split names are `train` and `val`; referenced paths must stay inside the dataset directory. Optional geographic `group` information is checked for overlap between splits.
+`pipeline_settings.json` must define class IDs 0–4 and set `ignore_label` to 255. Class 0 is background. Use the file's class names to identify the four foreground classes and their order.
 
-The baseline uses equal-sized chips, reads input bands 1–3 as RGB, and keeps native image/mask dimensions. Images and masks must agree spatially. The model exports predictions with the source georeferencing.
+## Manifest
 
-The original baseline has 73 training and 19 validation chips. Foreground imbalance and provisional annotations are central limitations; pixel accuracy alone is not a sufficient measure of quality.
+The required columns are `chip`, `split`, `image`, and `mask`. Split names must be `train` or `val`, and image/mask paths must stay inside the dataset folder. If a geographic `group` column is present, the code checks that groups do not appear in both splits.
+
+## Images and masks
+
+The baseline expects chips of the same size. It reads bands 1–3 as RGB and keeps the original image and mask dimensions. Each pair must line up spatially. Prediction TIFFs keep the source map coordinates.
+
+The original split contains 73 training and 19 validation chips. Most pixels are background, and the labels are still drafts. Per-class IoU and F1 are more useful than pixel accuracy alone for understanding where the model struggles.

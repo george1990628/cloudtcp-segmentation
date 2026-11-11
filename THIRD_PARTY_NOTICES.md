@@ -1,7 +1,7 @@
-# Third-party notices
+# Model and license notes
 
-SegFormer model architecture and pretrained checkpoint are provided by NVIDIA and their respective authors. The training source records checkpoint revision `489d5cd81a0b59fab9b7ea758d3548ebe99677da` for `nvidia/segformer-b0-finetuned-ade-512-512`.
+This project uses NVIDIA's SegFormer model and pretrained weights. The checkpoint is `nvidia/segformer-b0-finetuned-ade-512-512`, revision `489d5cd81a0b59fab9b7ea758d3548ebe99677da`.
 
-The NVIDIA SegFormer license text already carried in the project source is preserved in [`LICENSES/NVIDIA_SegFormer.txt`](LICENSES/NVIDIA_SegFormer.txt). It includes a research/evaluation, non-commercial use limitation. Model weights are fetched separately and are not included here.
+The [NVIDIA SegFormer license](LICENSES/NVIDIA_SegFormer.txt) is included. It limits use to non-commercial research and evaluation. Model weights are downloaded separately.
 
-Transformers, PyTorch, rasterio, NumPy, Pandas, and other dependencies retain their own licenses. The dataset and its imagery are not redistributed. No new repository-wide license is assigned to team-owned source during this portfolio preparation.
+Transformers, PyTorch, rasterio, NumPy, Pandas, and the other dependencies have their own licenses. The dataset and imagery are not included. No new license has been assigned to the team's source code here.
